@@ -10,5 +10,10 @@ namespace MusicLibraryWebAPI.Data
         {
 
         }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<Song>().ToTable("Songs");
+        }
     }
 }

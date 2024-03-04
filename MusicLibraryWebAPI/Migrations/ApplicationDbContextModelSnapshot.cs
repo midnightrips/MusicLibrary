@@ -24,24 +24,28 @@ namespace MusicLibraryWebAPI.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<int>("Album")
-                        .HasColumnType("int");
+                    b.Property<string>("Album")
+                        .IsRequired()
+                        .HasColumnType("longtext");
 
-                    b.Property<int>("Artist")
-                        .HasColumnType("int");
+                    b.Property<string>("Artist")
+                        .IsRequired()
+                        .HasColumnType("longtext");
 
-                    b.Property<int>("Genre")
-                        .HasColumnType("int");
+                    b.Property<string>("Genre")
+                        .IsRequired()
+                        .HasColumnType("longtext");
 
                     b.Property<int>("ReleaseDate")
                         .HasColumnType("int");
 
-                    b.Property<int>("Title")
-                        .HasColumnType("int");
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("longtext");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Songs");
+                    b.ToTable("Songs", (string)null);
                 });
 #pragma warning restore 612, 618
         }

@@ -20,11 +20,11 @@ namespace MusicLibraryWebAPI.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
-                    Title = table.Column<int>(type: "int", nullable: false),
-                    Artist = table.Column<int>(type: "int", nullable: false),
-                    Album = table.Column<int>(type: "int", nullable: false),
+                    Title = table.Column<string>(type: "longtext", nullable: false),
+                    Artist = table.Column<string>(type: "longtext", nullable: false),
+                    Album = table.Column<string>(type: "longtext", nullable: false),
                     ReleaseDate = table.Column<int>(type: "int", nullable: false),
-                    Genre = table.Column<int>(type: "int", nullable: false)
+                    Genre = table.Column<string>(type: "longtext", nullable: false)
                 },
                 constraints: table =>
                 {
