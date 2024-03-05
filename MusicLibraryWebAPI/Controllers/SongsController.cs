@@ -31,6 +31,10 @@ namespace MusicLibraryWebAPI.Controllers
         public IActionResult Get(int id)
         {
             var song = _context.Songs.Find(id);
+            if (song == null)
+            {
+                return NotFound();
+            }
             return Ok(song);
         }
 
@@ -47,7 +51,26 @@ namespace MusicLibraryWebAPI.Controllers
         [HttpPut("{id}")]
         public IActionResult Put(int id, [FromBody] Song song)
         {
-            _context.Songs.Where(s => s.Id == id).SingleOrDefault();
+            //_context.Songs.Find(id);
+            //_context.Songs.Update(song);
+            //_context.SaveChanges();
+            //return Ok(song);
+            var existingSong = _context.Songs.Where(s => s.Id == id).SingleOrDefault();
+
+            if (existingSong == null)
+            {
+                return NotFound();
+            }
+
+            // Update properties of existingSong with values from song
+            existingSong.Title = song.Title;
+            existingSong.Artist = song.Artist;
+            existingSong.Album = song.Album;
+            existingSong.ReleaseDate = song.ReleaseDate;
+            existingSong.Genre = song.Genre;
+
+            song = existingSong;
+
             _context.Songs.Update(song);
             _context.SaveChanges();
             return Ok(song);
